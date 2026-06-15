@@ -10,7 +10,7 @@
  */
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { certifications, certCategories } from '../data/certifications'
+import { certifications, certCategories } from '../data/Certifications'
 
 // ── Fade-in wrapper ───────────────────────────────────────────
 const FadeIn = ({ children, delay = 0 }) => (
