@@ -1,0 +1,58 @@
+/* ============================================================
+   Design tokens — single source of truth for every color,
+   font, radius, and shadow used across the portfolio.
+   Import this in main.jsx BEFORE index.css.
+   ============================================================ */
+
+:root {
+  /* Palette */
+  --color-bg:        #050816;
+  --color-primary:   #915eff;
+  --color-secondary: #00d4ff;
+  --color-accent:    #ff6b6b;
+  --color-success:   #4ade80;
+  --color-card:      #1d1836;
+  --color-card-alt:  #232631;
+
+  /* Text alpha helpers */
+  --text-muted:   rgba(255, 255, 255, 0.55);
+  --text-faint:   rgba(255, 255, 255, 0.35);
+  --text-ghost:   rgba(255, 255, 255, 0.15);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-muted:  rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(145, 94, 255, 0.25);
+
+  /* Typography */
+  --font-sans:    'Space Grotesk', sans-serif;
+  --font-mono:    'Fira Code', monospace;
+  --font-display: 'Syne', sans-serif;
+
+  /* Spacing scale */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Border radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-glow:       0 0 30px rgba(145, 94, 255, 0.3);
+  --shadow-glow-sm:    0 0 14px rgba(145, 94, 255, 0.2);
+  --shadow-card:       0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-primary:    0 4px 20px rgba(145, 94, 255, 0.35);
+  --shadow-primary-lg: 0 8px 40px rgba(145, 94, 255, 0.5);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #915EFF, #00d4ff);
+  --gradient-bg:      linear-gradient(to bottom, rgba(5, 8, 22, 0.6), #050816);
+}

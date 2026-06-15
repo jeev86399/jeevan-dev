@@ -1,0 +1,7 @@
+/* Root: exact viewport, no overflow, no native scroll (toggled per-route by ScrollManager) */
+#root {
+  width:      100%;
+  min-height: 100svh;
+  min-height: 100vh;  /* fallback for browsers without svh */
+  background: var(--color-bg);
+}

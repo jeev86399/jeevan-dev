@@ -1,0 +1,187 @@
+/* ============================================================
+   Global stylesheet — zero Tailwind, zero @apply
+   All design tokens live in src/styles/variables.css
+   ============================================================ */
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  background-color: var(--color-bg);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Home page — ScrollControls owns all scrolling */
+body.scroll-locked {
+  overflow: hidden !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--color-bg); }
+::-webkit-scrollbar-thumb  {
+  background: linear-gradient(var(--color-primary), var(--color-secondary));
+  border-radius: 10px;
+}
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection {
+  background: rgba(145, 94, 255, 0.27);
+  color: #fff;
+}
+
+/* ── Focus ───────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Reusable utility classes (no Tailwind) ─────────────────── */
+
+/* Section wrapper */
+.section-padding {
+  padding: 64px clamp(24px, 5vw, 64px);
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+/* Glassmorphism card */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon glow border */
+.neon-border {
+  box-shadow:
+    0 0 15px rgba(145, 94, 255, 0.4),
+    inset 0 0 15px rgba(145, 94, 255, 0.1);
+}
+
+/* Rounded card */
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+}
+
+/* Eyebrow label */
+.eyebrow {
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ── Canvas ──────────────────────────────────────────────────── */
+canvas {
+  touch-action: none;
+  display: block;
+}
+
+/* ── Mobile 3D performance ───────────────────────────────────── */
+@media (max-width: 768px) {
+  canvas {
+    image-rendering: optimizeSpeed;
+  }
+}
+
+/* ── Reduced motion (accessibility) ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Mobile-first responsive patches
+   ============================================================ */
+
+/* iOS / Android safe-area insets */
+body {
+  padding-left:   env(safe-area-inset-left);
+  padding-right:  env(safe-area-inset-right);
+}
+
+/* svh fallback for older browsers that don't support 100svh */
+@supports not (height: 100svh) {
+  :root { --vh: 1vh; }
+}
+@supports (height: 100svh) {
+  :root { --vh: 1svh; }
+}
+
+/* Prevent text size inflation on rotate */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* Touch tap highlight removal */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ── Responsive section padding ── */
+@media (max-width: 640px) {
+  .section-padding { padding: 40px 16px; }
+}
+
+/* ── Mobile hero: prevent content clipping ── */
+@media (max-width: 480px) {
+  /* Force hero buttons to stack vertically on very small screens */
+  .hero-cta {
+    flex-direction: column !important;
+    align-items:    center !important;
+    gap:            10px !important;
+  }
+}
+
+/* ── Navbar: ensure hamburger lines are visible ── */
+.nav-mobile-btn span {
+  display:       block;
+  width:         22px;
+  height:        2px;
+  background:    #ffffff;
+  border-radius: 2px;
+  transition:    transform 0.3s ease, opacity 0.3s ease;
+}
